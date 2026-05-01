@@ -41,7 +41,9 @@ After installing, restart Gemini CLI for the extension to activate.
 
 - ZeroWarp terminal
 - [Gemini CLI](https://github.com/google-gemini/gemini-cli) v0.26.0+
+- Bash-compatible hook execution
 - `jq` for JSON parsing
+- A POSIX-style terminal device at `/dev/tty` for local OSC delivery. On Windows, use WSL or another environment that exposes `/dev/tty`; native PowerShell/CMD delivery is not implemented in this release.
 
 ## How It Works
 
