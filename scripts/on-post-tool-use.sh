@@ -1,6 +1,6 @@
 #!/bin/bash
 # Hook script for Gemini CLI AfterTool event (equivalent to Claude Code's PostToolUse)
-# Sends a structured Warp notification after a tool call completes,
+# Sends a structured ZeroWarp notification after a tool call completes,
 # transitioning the session status from Blocked back to Running.
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

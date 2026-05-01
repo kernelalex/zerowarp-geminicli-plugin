@@ -1,5 +1,5 @@
 #!/bin/bash
-# Determines whether the current Warp build supports structured CLI agent notifications.
+# Determines whether the current ZeroWarp build supports structured CLI agent notifications.
 #
 # Usage:
 #   source "$SCRIPT_DIR/should-use-structured.sh"
@@ -11,7 +11,7 @@
 #
 # Returns 0 (true) when structured notifications are safe to use, 1 (false) otherwise.
 
-# Last known Warp release per channel that unconditionally set
+# Last known inherited Warp release per channel that unconditionally set
 # WARP_CLI_AGENT_PROTOCOL_VERSION without gating it behind the
 # HOANotifications feature flag. These builds advertise protocol
 # support but can't actually render structured notifications.
@@ -20,7 +20,7 @@ LAST_BROKEN_STABLE="v0.2026.03.25.08.24.stable_05"
 LAST_BROKEN_PREVIEW="v0.2026.03.25.08.24.preview_05"
 
 should_use_structured() {
-    # No protocol version advertised → Warp doesn't know about structured notifications.
+    # No protocol version advertised means the client doesn't know about structured notifications.
     [ -z "${WARP_CLI_AGENT_PROTOCOL_VERSION:-}" ] && return 1
 
     # No client version available → can't verify this build has the fix.

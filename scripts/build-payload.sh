@@ -16,8 +16,8 @@
 # The current protocol version this plugin knows how to produce.
 PLUGIN_CURRENT_PROTOCOL_VERSION=1
 
-# Negotiate the protocol version with Warp.
-# Uses min(plugin_current, warp_declared), falling back to 1 if Warp doesn't advertise a version.
+# Negotiate the protocol version with ZeroWarp.
+# Uses min(plugin_current, client_declared), falling back to 1 if ZeroWarp doesn't advertise a version.
 negotiate_protocol_version() {
     local warp_version="${WARP_CLI_AGENT_PROTOCOL_VERSION:-1}"
     if [ "$warp_version" -lt "$PLUGIN_CURRENT_PROTOCOL_VERSION" ] 2>/dev/null; then

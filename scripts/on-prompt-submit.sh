@@ -1,6 +1,6 @@
 #!/bin/bash
 # Hook script for Gemini CLI BeforeAgent event (equivalent to Claude Code's UserPromptSubmit)
-# Sends a structured Warp notification when the user submits a prompt,
+# Sends a structured ZeroWarp notification when the user submits a prompt,
 # transitioning the session status from idle/blocked back to running.
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

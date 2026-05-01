@@ -1,5 +1,5 @@
 #!/bin/bash
-# Tests for the Warp Gemini CLI plugin hook scripts.
+# Tests for the ZeroWarp Gemini CLI plugin hook scripts.
 #
 # Validates that each hook script produces correctly structured JSON payloads
 # by piping mock Gemini CLI hook input into the scripts and checking the output.
@@ -120,21 +120,21 @@ unset WARP_CLI_AGENT_PROTOCOL_VERSION
 PAYLOAD=$(build_payload '{"session_id":"s1","cwd":"/tmp"}' "stop")
 assert_json_field "defaults to v1 when env var absent" "$PAYLOAD" ".v" "1"
 
-# Warp declares v1 → use 1
+# ZeroWarp declares v1 -> use 1
 export WARP_CLI_AGENT_PROTOCOL_VERSION=1
 PAYLOAD=$(build_payload '{"session_id":"s1","cwd":"/tmp"}' "stop")
-assert_json_field "v1 when warp declares 1" "$PAYLOAD" ".v" "1"
+assert_json_field "v1 when ZeroWarp declares 1" "$PAYLOAD" ".v" "1"
 
-# Warp declares a higher version than the plugin knows → capped to plugin current
+# ZeroWarp declares a higher version than the plugin knows -> capped to plugin current
 export WARP_CLI_AGENT_PROTOCOL_VERSION=99
 PAYLOAD=$(build_payload '{"session_id":"s1","cwd":"/tmp"}' "stop")
-assert_json_field "capped to plugin current when warp is ahead" "$PAYLOAD" ".v" "1"
+assert_json_field "capped to plugin current when ZeroWarp is ahead" "$PAYLOAD" ".v" "1"
 
-# Warp declares a lower version than the plugin knows → use warp's version
+# ZeroWarp declares a lower version than the plugin knows -> use client version
 PLUGIN_CURRENT_PROTOCOL_VERSION=5
 export WARP_CLI_AGENT_PROTOCOL_VERSION=3
 PAYLOAD=$(build_payload '{"session_id":"s1","cwd":"/tmp"}' "stop")
-assert_json_field "uses warp version when plugin is ahead" "$PAYLOAD" ".v" "3"
+assert_json_field "uses client version when plugin is ahead" "$PAYLOAD" ".v" "3"
 PLUGIN_CURRENT_PROTOCOL_VERSION=1
 
 # Clean up

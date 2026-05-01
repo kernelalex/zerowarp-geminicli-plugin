@@ -1,6 +1,6 @@
 #!/bin/bash
 # Hook script for Gemini CLI AfterAgent event (equivalent to Claude Code's Stop)
-# Sends a structured Warp notification when Gemini completes a task
+# Sends a structured ZeroWarp notification when Gemini completes a task
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/should-use-structured.sh"

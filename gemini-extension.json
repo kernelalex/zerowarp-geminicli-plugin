@@ -1,5 +1,5 @@
 {
-  "name": "gemini-warp",
-  "description": "Warp terminal integration for Gemini CLI - native notifications and session status",
+  "name": "zerowarp-geminicli-plugin",
+  "description": "Local-only ZeroWarp notification extension for Gemini CLI",
   "version": "1.0.0"
 }
